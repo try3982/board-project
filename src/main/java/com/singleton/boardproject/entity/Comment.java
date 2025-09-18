@@ -14,17 +14,18 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long comment_id;
+    @Column(name = "comment_id")
+    private Long id;
 
     @Column(nullable = false)
     private String commentContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="post_id",nullable = false)
+    @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id",nullable = false)
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     @Column(nullable = false)

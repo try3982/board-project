@@ -6,7 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comments;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
@@ -17,7 +20,8 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long post_id;
+    @Column(name = "post_id")
+    private Long id;
 
     @Column(nullable = false)
     private String title;
@@ -32,11 +36,11 @@ public class Post {
     private Long viewCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "email", nullable = false)
-    private Member member;
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member author;
 
-    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comments> comments;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
 
     @Transient
     private int commentCount;

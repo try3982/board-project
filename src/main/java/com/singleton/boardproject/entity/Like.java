@@ -10,18 +10,20 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="likes")
+@Table(name = "likes")
 public class Like {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long like_id;
+    @Column(name = "like_id")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="member_id",nullable = false)
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="post_id",nullable = false)
+    @JoinColumn(name = "post_id", nullable = false)
     private Post post;
+
 }
