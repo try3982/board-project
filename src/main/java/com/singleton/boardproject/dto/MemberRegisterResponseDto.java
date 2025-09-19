@@ -4,12 +4,12 @@ import com.singleton.boardproject.entity.Member;
 import lombok.Getter;
 
 @Getter
-public class MemberResponseDto {
+public class MemberRegisterResponseDto {
 
     private String email;
     private String password;
 
-    public MemberResponseDto(Member member) {
+    public MemberRegisterResponseDto(Member member) {
         this.email = member.getEmail();
         this.password = member.getPassword();
     }

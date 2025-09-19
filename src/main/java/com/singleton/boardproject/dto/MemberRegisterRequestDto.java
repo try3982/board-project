@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MemberRegisterDto {
+public class MemberRegisterRequestDto {
 
     @NotBlank(message ="이메일 입력은 필수입니다.")
     @Email
