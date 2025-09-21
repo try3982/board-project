@@ -31,4 +31,13 @@ public class Comment {
     @Column(nullable = false)
     private boolean isDeleted = false;
 
+
+    public void softDelete() { this.isDeleted = true; }
+
+    public boolean deleted() { return isDeleted; }
+
+    public void updateContent(String newContent) {
+        this.commentContent = newContent;
+    }
+
 }
