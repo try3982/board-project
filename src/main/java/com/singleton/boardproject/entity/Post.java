@@ -2,6 +2,7 @@ package com.singleton.boardproject.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comments;
@@ -16,6 +17,7 @@ import static jakarta.persistence.FetchType.LAZY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "posts")
+@Builder
 public class Post {
 
     @Id
@@ -46,15 +48,21 @@ public class Post {
     private int commentCount;
 
     public void increaseLikeCount() {
-        this.likeCount++;
+        this.likeCount = (this.likeCount == null ? 0 : this.likeCount) + 1;
     }
 
     public void decreaseLikeCount() {
-        this.likeCount--;
+        long cur = (this.likeCount == null ? 0 : this.likeCount);
+        this.likeCount = Math.max(0, cur - 1);
     }
 
     public void increaseViewcount() {
         this.commentCount++;
+    }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
 }
