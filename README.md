@@ -51,6 +51,12 @@ Spring Boot + JPA 기반으로 구현한 **RESTful 게시판 서비스**입니�
 
 ---
 
+## ERD
+
+<img width="920" height="452" alt="board (1)" src="https://github.com/user-attachments/assets/7517ab4b-b1c0-42e4-aeb3-008aeb60cfe6" />
+
+
+
 ## API 명세서
 
 ---
